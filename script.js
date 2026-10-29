@@ -1,5 +1,5 @@
 const $=s=>document.querySelector(s);
-let BASE=localStorage.getItem('api')||'http://127.0.0.1:8000';
+let BASE=localStorage.getItem('api')||'https://fastapi-and-postgres-2jus.onrender.com';
 const st={page:1,total:0,editing:null,delId:null};
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const grade=m=>m>=90?'A+':m>=80?'A':m>=70?'B':m>=60?'C':'F';
