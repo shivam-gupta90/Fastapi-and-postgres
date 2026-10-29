@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Student Records</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div><h1>Student <span>Records</span></h1><p class="sub">Manage enrolments, marks and grades</p></div>
+    <div class="status"><i class="dot" id="dot"></i><span id="stxt">Connecting…</span>
+      <button id="cfg" style="padding:4px 10px;font-size:.75rem">API</button></div>
+  </header>
+
+  <section class="stats">
+    <div class="card"><small>Total students</small><b id="sTotal">–</b></div>
+    <div class="card"><small>Avg marks (this page)</small><b id="sAvg">–</b></div>
+    <div class="card"><small>Top mark (this page)</small><b id="sTop">–</b></div>
+    <div class="card"><small>Page</small><b id="sPage">–</b></div>
+  </section>
+
+  <div class="bar">
+    <input id="fCourse" placeholder="Filter by course…">
+    <select id="fSort"><option value="">Sort: default</option><option value="marks">Marks</option><option value="age">Age</option><option value="name">Name</option></select>
+    <select id="fOrder"><option value="asc">Ascending</option><option value="desc">Descending</option></select>
+    <input id="fFind" placeholder="Find by ID (e.g. S001)" style="max-width:190px">
+    <button id="bFind">Find</button>
+    <button class="primary" id="bAdd">+ Add student</button>
+  </div>
+
+  <div class="tablewrap"><table>
+    <thead><tr><th>ID</th><th>Name</th><th>Age</th><th>Course</th><th>Marks</th><th>Grade</th><th></th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table></div>
+
+  <div class="pager">
+    <span id="pInfo"></span>
+    <div>
+      <select id="fLimit"><option>5</option><option selected>10</option><option>25</option><option>50</option></select>
+      <button id="bPrev">← Prev</button><button id="bNext">Next →</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="ovForm"><div class="modal">
+  <h2 id="mTitle">Add student</h2>
+  <div class="grid">
+    <div><label>ID</label><input id="iId" placeholder="S001"></div>
+    <div><label>Age</label><input id="iAge" type="number" min="1" max="100"></div>
+    <div class="full"><label>Full name</label><input id="iName"></div>
+    <div class="full"><label>Email</label><input id="iEmail" type="email"></div>
+    <div><label>Course</label><input id="iCourse"></div>
+    <div><label>Marks (0–100)</label><input id="iMarks" type="number" min="0" max="100"></div>
+  </div>
+  <p class="err" id="mErr"></p>
+  <div class="foot"><button id="mCancel">Cancel</button><button class="primary" id="mSave">Save</button></div>
+</div></div>
+
+<div class="overlay" id="ovDel"><div class="modal">
+  <h2>Delete student?</h2><p class="mute" id="dMsg"></p>
+  <div class="foot"><button id="dCancel">Cancel</button><button class="primary" id="dOk" style="background:var(--bad);color:#fff">Delete</button></div>
+</div></div>
+<div id="toasts"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
